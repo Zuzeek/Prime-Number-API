@@ -1,8 +1,11 @@
 package ag.demo.api;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface NumberRepository extends JpaRepository<NumberModel, Long> {
-	
-
+@Repository
+public interface NumberRepository extends JpaRepository<Number, Long> {
+	List<Number> findByNumberLessThanEqual(int num);
 }

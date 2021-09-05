@@ -12,16 +12,23 @@ import lombok.Data;
 @Entity
 @Data 
 @Table(name = "numbers")
-public class NumberModel {
+public class Number {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column
 	private long id; 
 	
 	@Column
 	private int number;
 
-	public NumberModel(int number) {
+	public Number() {}
+
+	public Number(long id, int number) {
+		this.id = id;
 		this.number = number;
-	} 
+	}
+	
+
+ 
 }
