@@ -7,9 +7,9 @@
 ** login: sa ;
 ** password: password ; 
 
-*After starting the application, we can navigate to  http://localhost:8087/h2-console
-which will present us with a login page. On the login page,
-we'll supply the same credentials as we used in this application.properties:
+*After starting the application navigate to  http://localhost:8087/h2-console
+which will present you with a login page. On the login page,
+supply the same credentials as provide above and used within this application.properties file:
 password & username
 remember to specify the correct url for your database
 
