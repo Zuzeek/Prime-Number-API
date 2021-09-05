@@ -1,7 +1,7 @@
 "# Prime-Number-API"
 
 # Tech used: 
-Java JDK 11, 
+- Java JDK 11, 
 - Spring Boot 2.5.4, 
 - H2 in-memory database: 
 ** login: sa ;
