@@ -3,6 +3,7 @@ package ag.demo.api;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.math3.primes.Primes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,11 +19,11 @@ public class PrimeNumberServiceImpl implements PrimeNumberService {
 	
 	@Override
 	public void createNumber(Number num) {
-		Number newPrimeNum = new Number(); 
-		newPrimeNum.setNumber(num.getNumber());
-		saveNumber(newPrimeNum);
+		saveNumber(num);
 	}
 
+	// TODO: add exception 
+	
 	@Override
 	public List<Number> getListOfPrimeNumbers(int num) {
 		List<Number> primeNumbers = new ArrayList<>(); 
@@ -41,20 +42,11 @@ public class PrimeNumberServiceImpl implements PrimeNumberService {
 		List<Number> primeNumToReturn = new ArrayList<>();
 		
 		for (Number n: numbers) {
-			if (n.getNumber() <= num && isPrimeNumber(n.getNumber())) {
+			if (n.getNumber() <= num && Primes.isPrime(n.getNumber())) {
 				primeNumToReturn.add(n); 
 			}
 		}
 		return primeNumToReturn; 
-	}
-	
-	private boolean isPrimeNumber(int num) {
-		if (num == 2 || num == 3) 
-			return true; 
-		
-		if (num % 2 == 0 || num % 3 == 0) 
-			return false; 
-		return true; 
 	}
 
 	@Override
