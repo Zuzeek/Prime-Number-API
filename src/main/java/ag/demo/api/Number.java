@@ -24,8 +24,7 @@ public class Number {
 
 	public Number() {}
 
-	public Number(long id, int number) {
-		this.id = id;
+	public Number(int number) {
 		this.number = number;
 	}
 	

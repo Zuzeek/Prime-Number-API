@@ -4,6 +4,7 @@ import java.util.List;
 
 public interface PrimeNumberService {
 	
-	public void createNumber(Number num); 
-	public List<Number> getListOfPrimeNumbers(int num);
+	void createNumber(Number num); 
+	List<Number> getListOfPrimeNumbers(int num);
+	List<Number> getAllNumbers();
 }
