@@ -1,4 +1,4 @@
-package ag.demo.api;
+package ag.demo.api.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,27 +7,27 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Entity
 @Data 
 @Table(name = "numbers")
-public class Number {
+public class NumberEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column
+	@JsonIgnore
 	private long id; 
 	
+//	@Pattern(regexp = "", message = "Enter a number higher than zero")
 	@Column
 	private int number;
 
-	public Number() {}
+	public NumberEntity() {}
 
-	public Number(int number) {
+	public NumberEntity(int number) {
 		this.number = number;
 	}
-	
-
- 
 }
