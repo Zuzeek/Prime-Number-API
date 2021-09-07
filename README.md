@@ -2,6 +2,7 @@
 
 # Tech used: 
 - Java JDK 11, 
+- Apache Maven 3.6.3
 - Spring Boot 2.5.4, 
 - H2 in-memory database: 
 ** login: sa ;
