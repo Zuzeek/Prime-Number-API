@@ -26,8 +26,8 @@ public class DataLoader implements CommandLineRunner {
 		// preload database 
 		LOG.info("Preloading database with integers.");
 		
-		for (int i = 1; i < DATABASE_NUMBER; i ++) {
-			numberService.createNumber(new NumberEntity(i));
-		}
+//		for (int i = 1; i < DATABASE_NUMBER; i ++) {
+//			numberService.addNumbers(new NumberEntity(i));
+//		}
 	}
 }
