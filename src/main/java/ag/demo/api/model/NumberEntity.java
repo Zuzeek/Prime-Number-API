@@ -21,7 +21,6 @@ public class NumberEntity {
 	@JsonIgnore
 	private long id; 
 	
-//	@Pattern(regexp = "", message = "Enter a number higher than zero")
 	@Column
 	private int number;
 

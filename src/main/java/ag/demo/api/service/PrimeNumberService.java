@@ -6,7 +6,7 @@ import ag.demo.api.model.NumberEntity;
 
 public interface PrimeNumberService {
 	
-	List<NumberEntity> getListOfPrimeNumbers(int num);
 	List<NumberEntity> getAllNumbers();
-	void addNumbers(int num);
+	void addNumbers(NumberEntity num);
+	List<NumberEntity> getListOfPrimeNumbers(NumberEntity num); 
 }

@@ -21,26 +21,26 @@ public class PrimeNumberServiceImpl implements PrimeNumberService {
 	}
 	
 	@Override
-	public void addNumbers(int num) {
+	public void addNumbers(NumberEntity num) {
 		List<NumberEntity> numbers = new ArrayList<>(); 
 		
-		for (int i = 0; i < num; i++) {
+		for (int i = 0; i < num.getNumber(); i++) {
 			NumberEntity number = new NumberEntity();
 			number.setNumber(i); 
 			saveNumber(number);
 			numbers.add(number); 
 		}
 	}
-
+	
 	/**
 	 *  TODO: handle exceptions, add validation
 	 */
 	@Override
-	public List<NumberEntity> getListOfPrimeNumbers(int num) {
+	public List<NumberEntity> getListOfPrimeNumbers(NumberEntity num) {
 		List<NumberEntity> primeNumbers = new ArrayList<>(); 
 		
-		if (num != 0 || num > 0) {
-			primeNumbers = filterByPrimeNumbers(getListOfNumbersLessThenEqual(num), num);
+		if (num.getNumber() != 0 || num.getNumber() > 0) {
+			primeNumbers = filterByPrimeNumbers(getListOfNumbersLessThenEqual(num.getNumber()), num.getNumber());
 		}
 		return primeNumbers;
 	}

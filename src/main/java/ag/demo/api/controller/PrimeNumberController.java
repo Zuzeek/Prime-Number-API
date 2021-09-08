@@ -23,9 +23,9 @@ public class PrimeNumberController {
 	@Autowired
 	private PrimeNumberService numberService; 
 	
-	@GetMapping(value = "/number/{number}", 
+	@GetMapping(value = "/number}", 
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<NumberEntity>> getPrimeNumbers (@PathVariable(value = "number") int number) {
+	public ResponseEntity<List<NumberEntity>> getPrimeNumbers (@RequestBody NumberEntity number) {
 		return new ResponseEntity<>(numberService.getListOfPrimeNumbers(number), HttpStatus.OK); 
 	}
 	
@@ -35,11 +35,10 @@ public class PrimeNumberController {
 		return new ResponseEntity<>(numberService.getAllNumbers(), HttpStatus.OK); 
 	}
 	
-	@PostMapping(value = "/add/{number}", 
+	@PostMapping(value = "/add}", 
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<NumberEntity>> createNumbersToAddToDataBase (@PathVariable(value = "number") int number) {
+	public ResponseEntity<List<NumberEntity>> createNumbers (@RequestBody NumberEntity number) {
 		numberService.addNumbers(number);
 		return new ResponseEntity<>(HttpStatus.CREATED); 
 	}
-	
 }
