@@ -16,12 +16,12 @@ public class PrimeNumberServiceImpl implements PrimeNumberService {
 	@Autowired
 	private NumberRepository numberRepo; 
 	
-	private void saveNumber(NumberEntity num) {
-		 numberRepo.save(num); 
+	private NumberEntity saveNumber(NumberEntity num) {
+		 return numberRepo.save(num); 
 	}
 	
 	@Override
-	public void addNumbers(NumberEntity num) {
+	public List<NumberEntity> addNumbers(NumberEntity num) {
 		List<NumberEntity> numbers = new ArrayList<>(); 
 		
 		for (int i = 0; i < num.getNumber(); i++) {
@@ -30,11 +30,9 @@ public class PrimeNumberServiceImpl implements PrimeNumberService {
 			saveNumber(number);
 			numbers.add(number); 
 		}
+		return numbers; 
 	}
 	
-	/**
-	 *  TODO: handle exceptions, add validation
-	 */
 	@Override
 	public List<NumberEntity> getListOfPrimeNumbers(NumberEntity num) {
 		List<NumberEntity> primeNumbers = new ArrayList<>(); 
