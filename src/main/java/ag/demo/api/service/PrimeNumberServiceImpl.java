@@ -16,7 +16,8 @@ public class PrimeNumberServiceImpl implements PrimeNumberService {
 	@Autowired
 	private NumberRepository numberRepo; 
 	
-	private NumberEntity saveNumber(NumberEntity num) {
+	@Override
+	public NumberEntity saveNumber(NumberEntity num) {
 		 return numberRepo.save(num); 
 	}
 	
