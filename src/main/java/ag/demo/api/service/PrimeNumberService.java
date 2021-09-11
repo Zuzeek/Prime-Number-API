@@ -9,5 +9,5 @@ public interface PrimeNumberService {
 	List<NumberEntity> getAllNumbers();
 	List<NumberEntity> addNumbers(NumberEntity num);
 	List<NumberEntity> getListOfPrimeNumbers(NumberEntity num);
-	NumberEntity saveNumber(NumberEntity num); 
+	void deleteAllNumbers(); 
 }

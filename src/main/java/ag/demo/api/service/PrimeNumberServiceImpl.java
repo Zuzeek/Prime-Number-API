@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import ag.demo.api.model.NumberEntity;
 import ag.demo.api.repo.NumberRepository;
+import ag.demo.api.util.ResourceNotFoundException;
 
 @Service
 public class PrimeNumberServiceImpl implements PrimeNumberService {
@@ -16,8 +17,7 @@ public class PrimeNumberServiceImpl implements PrimeNumberService {
 	@Autowired
 	private NumberRepository numberRepo; 
 	
-	@Override
-	public NumberEntity saveNumber(NumberEntity num) {
+	private NumberEntity saveNumber(NumberEntity num) {
 		 return numberRepo.save(num); 
 	}
 	
@@ -25,7 +25,7 @@ public class PrimeNumberServiceImpl implements PrimeNumberService {
 	public List<NumberEntity> addNumbers(NumberEntity num) {
 		List<NumberEntity> numbers = new ArrayList<>(); 
 		
-		for (int i = 0; i < num.getNumber(); i++) {
+		for (int i = 1; i < num.getNumber(); i++) {
 			NumberEntity number = new NumberEntity();
 			number.setNumber(i); 
 			saveNumber(number);
@@ -39,8 +39,8 @@ public class PrimeNumberServiceImpl implements PrimeNumberService {
 		List<NumberEntity> primeNumbers = new ArrayList<>(); 
 		
 		if (num.getNumber() != 0 || num.getNumber() > 0) {
-			primeNumbers = filterByPrimeNumbers(getListOfNumbersLessThenEqual(num.getNumber()), num.getNumber());
-		}
+			filterByPrimeNumbers(getListOfNumbersLessThenEqual(num.getNumber()), num.getNumber()).forEach(primeNumbers::add);
+		} 
 		return primeNumbers;
 	}
 	
@@ -61,6 +61,13 @@ public class PrimeNumberServiceImpl implements PrimeNumberService {
 
 	@Override
 	public List<NumberEntity> getAllNumbers() {
-		return numberRepo.findAll();
+		List<NumberEntity> numbers = new ArrayList<>(); 
+		numberRepo.findAll().forEach(numbers:: add);
+		return numbers;
+	}
+	
+	@Override
+	public void deleteAllNumbers() {
+		numberRepo.deleteAll();
 	}
 }
