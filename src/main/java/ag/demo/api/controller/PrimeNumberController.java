@@ -20,6 +20,7 @@ import ag.demo.api.service.PrimeNumberService;
 
 @RequestMapping(value = "/api")
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class PrimeNumberController {
 	
 	@Autowired
@@ -28,7 +29,7 @@ public class PrimeNumberController {
 	@GetMapping(value = "/primeNumbers", 
 			consumes = MediaType.APPLICATION_JSON_VALUE, 
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<NumberEntity>> getPrimeNumbers (@Valid @RequestBody NumberEntity number) {
+	public ResponseEntity<List<NumberEntity>> getPrimeNumbers (@RequestBody NumberEntity number) {
 		try {
 			List<NumberEntity> primeNumbers = numberService.getListOfPrimeNumbers(number); 
 			
@@ -61,7 +62,7 @@ public class PrimeNumberController {
 	@PostMapping(value = "/add", 
 			consumes = MediaType.APPLICATION_JSON_VALUE, 
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<NumberEntity>> createNumbers (@Valid @RequestBody NumberEntity number) {
+	public ResponseEntity<List<NumberEntity>> createNumbers (@RequestBody NumberEntity number) {
 		try {
 			return new ResponseEntity<>(numberService.addNumbers(number), HttpStatus.CREATED); 
 		} catch (Exception e) {
